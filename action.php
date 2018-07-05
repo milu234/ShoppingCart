@@ -28,7 +28,7 @@ include "db.php";
 			while ($row = mysqli_fetch_array($run_query)) {
 				$bid = $row["brand_id"];
 				$brand_name = $row["brand_title"];
-				echo "<li><a href='#'>$brand_name</a></li>";
+				echo "<li><a href='#' class='brand' bid='$bid' >$brand_name</a></li>";
 			}
 			echo "</div>";
 			
@@ -61,5 +61,70 @@ include "db.php";
 						</div>";
 			}
 		}
+	}
+
+
+
+	// if (isset($_POST["get_selected_Category"])) {
+	// 	$cid=$_POST["cat_id"];
+	// 	$sql="SELECT * FROM products WHERE product_cat = '$cid'";
+	// 	$run_query = mysqli_query($con,$sql);
+	// 	while ($row = mysqli_fetch_array($run_query)) {
+	// 		$pro_id =     $row['product_id'];
+	// 			$pro_cat= 	$row['product_cat'];
+	// 			$pro_brand =$row['product_brand'];
+	// 			$pro_title = $row['product_title'];
+	// 			$pro_price = $row['product_price'];
+	// 			$pro_image = $row['product_img'];
+	// 			echo "<div class='col-md-4'>
+	// 					<div class='panel panel-info'>
+	// 						<div class='panel-heading'><h4>$pro_title</h4></div>
+	// 						<div class='panel-body'>
+	// 							<img  class='img-responsive' src='product_images/$pro_image' style='width:160px;height:250px;'/>
+	// 						</div>
+	// 						<div class='panel-heading'>
+	// 							Rs.$pro_price.00
+	// 							<button pid='$pro_id' style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
+	// 						</div>
+	// 					</div>
+	// 					</div>";
+	// 	}
+		
+	// }
+
+
+
+	if (isset($_POST["get_selected_Category"]) || isset($_POST["get_selected_Brand"])) {
+
+		if (isset($_POST["get_selected_Category"])){
+			$id=$_POST["cat_id"];
+			$sql="SELECT * FROM products WHERE product_cat = '$id'";	
+		}else if(isset($_POST["get_selected_Brand"])){
+			$id=$_POST["brand_id"];
+			$sql="SELECT * FROM products WHERE product_brand = '$id'";
+		}		
+		
+		$run_query = mysqli_query($con,$sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$pro_id =     $row['product_id'];
+				$pro_cat= 	$row['product_cat'];
+				$pro_brand =$row['product_brand'];
+				$pro_title = $row['product_title'];
+				$pro_price = $row['product_price'];
+				$pro_image = $row['product_img'];
+				echo "<div class='col-md-4'>
+						<div class='panel panel-info'>
+							<div class='panel-heading'><h4>$pro_title</h4></div>
+							<div class='panel-body'>
+								<img  class='img-responsive' src='product_images/$pro_image' style='width:160px;height:250px;'/>
+							</div>
+							<div class='panel-heading'>
+								Rs.$pro_price.00
+								<button pid='$pro_id' style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
+							</div>
+						</div>
+						</div>";
+		}
+		
 	}
 ?>
