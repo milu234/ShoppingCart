@@ -67,7 +67,27 @@ $(document).ready(function(){
 		})
 
 		
-	})	
+	})
+
+	$("#search_btn").click(function(){
+		var keyword = $("#search").val();
+		if (keyword !="") {
+				$.ajax({
+				url     :    "action.php",
+				method  :     "POST",
+				data    :     {search:1,keyword:keyword},
+				success :      function(data){
+					$("#get_product").html(data);
+				}
+			})
+		}
+	})
+
+
+
+
+
+
 
 
 

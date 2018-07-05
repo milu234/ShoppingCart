@@ -94,7 +94,7 @@ include "db.php";
 
 
 
-	if (isset($_POST["get_selected_Category"]) || isset($_POST["get_selected_Brand"])) {
+	if (isset($_POST["get_selected_Category"]) || isset($_POST["get_selected_Brand"]) || isset($_POST["search"])) {
 
 		if (isset($_POST["get_selected_Category"])){
 			$id=$_POST["cat_id"];
@@ -102,6 +102,9 @@ include "db.php";
 		}else if(isset($_POST["get_selected_Brand"])){
 			$id=$_POST["brand_id"];
 			$sql="SELECT * FROM products WHERE product_brand = '$id'";
+		}else {
+			$keyword = $_POST["keyword"];
+			$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' ";
 		}		
 		
 		$run_query = mysqli_query($con,$sql);

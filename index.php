@@ -18,7 +18,7 @@
 				<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>Product</a></li>
 				<li style="width: 300px;left: 10px;top: 10px;"><input type="text" class="form-control" id="search"></li>
-				<li style="top: 10px;left: 20px;"><input type="submit"  class="btn btn-primary" id="search_btn" ></li>
+				<li style="top: 10px;left: 20px;"><button  class="btn btn-primary" id="search_btn" >Search</button></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right" class="nav navbar-responsive">
 				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
