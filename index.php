@@ -9,20 +9,33 @@
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top" class="nav navbar-responsive">
 		<div class="container-fluid">
 			<div class=" navbar-header">
 				<a href="#" class="navbar-brand">Milan</a>
 			</div>
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" id="dropdown-menu">
 				<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>Product</a></li>
 				<li style="width: 300px;left: 10px;top: 10px;"><input type="text" class="form-control" id="search"></li>
 				<li style="top: 10px;left: 20px;"><input type="submit"  class="btn btn-primary" id="search_btn" ></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a>
-					<div class="dropdown-menu"></div>		
+			<ul class="nav navbar-nav navbar-right" class="nav navbar-responsive">
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
+					<div class="dropdown-menu" style="width: 400px;" >
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-md-3">Sr No.</div>
+									<div class="col-md-3">Product Image</div>
+									<div class="col-md-3">Product Name</div>
+									<div class="col-md-3">Price in Rs.</div>
+								</div>
+							</div>
+							<div class="panel-body"></div>
+							<div class="panel-footer"></div>
+						</div>
+					</div>		
 
 
 				</li>
@@ -52,11 +65,15 @@
 	<p><br></p>
 	<p><br></p>
 	<p><br></p>
-	<div class="container-fluid">
+	<div class="container-fluid" class="container container-responsive">
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
-				<div class="nav nav-pills nav-stacked" >
+				<div id ="get_category">
+					
+				</div>
+<!-- 				<div class="nav nav-pills nav-stacked" >
+
 					<li class="active"><a href="#"><h4>Categories</h4></a></li>
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
@@ -65,31 +82,39 @@
 					<li><a href="#">Categories</a></li>
 				</div>
 
-				<div class="nav nav-pills nav-stacked" >
+
+ -->
+ 				<div id ="get_brand">
+					
+				</div>
+				<!-- <div class="nav nav-pills nav-stacked" >
 					<li class="active"><a href="#"><h4>Brand</h4></a></li>
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
-				</div>
+				</div> -->
 			</div>
 				
 		<div class="col-md-8">
 			<div class="panel panel-info">
 				<div class="panel-heading">Products</div>
 				<div class="panel-body">
-					<div class="col-md-4">
+					<div id="get_product">
+						
+					</div>
+					<!-- <div class="col-md-4">
 						<div class="panel panel-info">
 							<div class="panel-heading"><h4>One +6</h4></div>
 							<div class="panel-body">
-								<img  class="img-responsive" src="product_images/images.jpeg"/>
+								<img  class="img-responsive" src="product_images/hplaptop.jpeg"/>
 							</div>
 							<div class="panel-heading">
 								Rs.12000
 								<button style="float: right;" class="btn btn-danger btn-xs">AddToCart</button>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="panel-footer">&copy; 2018</div>
