@@ -1,14 +1,14 @@
 <?php
 session_start();
-if (isset($_SESSION["uid"])) {
+if (!isset($_SESSION["uid"])) {
 	# code...
-	header("location:profilee.php");
+	header("location:index.php");
 }
 
 ?>
 
-
 <!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -49,25 +49,18 @@ if (isset($_SESSION["uid"])) {
 
 
 				</li>
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>Login</a>
+
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hi, ".$_SESSION["name"]; ?></a>
 					<ul class="dropdown-menu">
-						<div style="width: 300px;">
-							<div class="panel panel-primary">
-							<div class="panel-heading">Login</div>
-							<div class="panel-heading">
-								<label for="email">Email</label>
-								<input type="email" class="form-control" id="email" required/>
-								<label for="email">Password</label>
-								<input type="password" class="form-control" id="password" required/>
-								<p><br></p>
-								<a href="#" style="color: white; list-style: none;">Forgotten Password?..</a><input type="submit" class="btn btn-success" style="float: right;" id="login" value="Login" >
-							</div>
-							<div class="panel-footer" id="e_msg"></div>
-						</div>
-					</div>
+						<li><a href="#" style="text-decoration: none;color: grey"><span class="glyphicon glyphicon-shopping-cart">Cart</span> </a></li>
+						<li class="divider"></li>
+						<li><a href="#" style="text-decoration: none;color: blue"  >Change Password</a></li>
+						<li class="divider"></li>
+						<li><a href="logout.php" style="text-decoration: none;color: green" >Logout</a></li>
+						
 					</ul>
 				</li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+				
 			</ul>
 		</div>
 		 

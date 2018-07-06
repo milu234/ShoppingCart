@@ -95,6 +95,25 @@ $(document).ready(function(){
 		})
 	})
 
+	$("#login").click(function(event){
+		event.preventDefault();
+		var email = $("#email").val();
+		var pass = $("#password").val();
+
+		// alert(0);
+		$.ajax({
+			url      :  "login.php",
+			method   :  "POST",
+			data     :   {userLogin:1,userEmail:email,userPassword:pass},
+			success  :   function(data){
+				if (data == "trueasdfghjkl") {
+					window.location.href = "profilee.php";
+				}
+			}
+		})
+
+	})
+
 
 
 

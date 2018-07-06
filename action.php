@@ -55,7 +55,7 @@ include "db.php";
 							</div>
 							<div class='panel-heading'>
 								Rs.$pro_price.00
-								<button pid='$pro_id' style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
+								<button pid='$pro_id' id='product' style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
 							</div>
 						</div>
 						</div>";
@@ -123,11 +123,14 @@ include "db.php";
 							</div>
 							<div class='panel-heading'>
 								Rs.$pro_price.00
-								<button pid='$pro_id' style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
+								<button pid='$pro_id' id='product'  style='float: right;' class='btn btn-success btn-xs'>AddToCart</button>
 							</div>
 						</div>
 						</div>";
 		}
 		
 	}
+
+
+	
 ?>
