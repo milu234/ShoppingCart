@@ -31,7 +31,7 @@ if (!isset($_SESSION["uid"])) {
 				<li style="top: 10px;left: 20px;"><button  class="btn btn-primary" id="search_btn" >Search</button></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right" class="nav navbar-responsive">
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
+				<li><a href="#" id="cart_container"  class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
 					<div class="dropdown-menu" style="width: 400px;" >
 						<div class="panel panel-success">
 							<div class="panel-heading">
@@ -42,7 +42,16 @@ if (!isset($_SESSION["uid"])) {
 									<div class="col-md-3">Price in Rs.</div>
 								</div>
 							</div>
-							<div class="panel-body"></div>
+							<div class="panel-body">
+								<div id="cart_product">
+								<!-- <div class="row">
+									<div class="col-md-3">Sr No.</div>
+									<div class="col-md-3">Product Image</div>
+									<div class="col-md-3">Product Name</div>
+									<div class="col-md-3">Price in Rs.</div>
+								</div> -->
+								</div>
+							</div>
 							<div class="panel-footer"></div>
 						</div>
 					</div>		
@@ -101,6 +110,12 @@ if (!isset($_SESSION["uid"])) {
 			</div>
 				
 		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-12" id="product_msg" >
+					
+				</div>
+			</div>
+
 			<div class="panel panel-info">
 				<div class="panel-heading">Products</div>
 				<div class="panel-body">

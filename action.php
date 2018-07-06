@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "db.php";
 	if (isset($_POST["category"])) {
 		$category_query = "SELECT * FROM categories";
@@ -129,6 +130,70 @@ include "db.php";
 						</div>";
 		}
 		
+	}
+
+
+	if (isset($_POST["addToProduct"])) {
+		# code...
+		$p_id = $_POST["proId"];
+
+		$user_id = $_SESSION["uid"];
+		$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'  ";
+		$run_query = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($run_query);
+		if ($count > 0) {
+			# code...
+					echo " <div class='alert alert-warning'>
+					<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+					<b>Product Already in the Cart ...Continue Shopping </b>
+					</div>";
+		} else {
+			$sql = "SELECT * FROM products WHERE product_id = '$p_id'";
+			$run_query = mysqli_query($con,$sql);
+			$row  = mysqli_fetch_array($run_query);
+				$id = $row["product_id"];
+				$pro_name = $row["product_title"];
+				$pro_image = $row["product_image"];
+				$pro_price = $row["product_price"];
+			$sql = "INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `product_title`, `product_image`, `qty`, `price`, `total_amount`) VALUES (NULL, '$p_id', '0', '$user_id', '$pro_name', '$pro_image', '1', '$pro_price', '$pro_price');";
+			if (mysqli_query($con,$sql)) {
+						echo " <div class='alert alert-success'>
+						<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+						<b>Product Added to the cart </b>
+						</div>";
+				# code...
+			}
+		}
+	}
+
+	if (isset($_POST["get_cart_product"])) {
+		$uid = $_SESSION["uid"];
+		$sql = "SELECT * FROM cart WHERE user_id = '$uid'  ";
+		$run_query = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($run_query);
+		if ($count > 0) {
+			$no = 1;
+			while ($row = mysqli_fetch_array($run_query)) {
+				$id = $row["id"];
+				$pro_id = $row["p_id"];
+				$pro_name = $row["product_title"];
+				$pro_image = $row["product_image"];
+				$pro_price = $row["price"];
+
+
+				echo "<div class='row'>
+									<div class='col-md-3'>$no</div>
+									<div class='col-md-3'><img class='img-responsive' src = 'product_images/$pro_image' style='width:60px;height:50px;'> </div>
+									<div class='col-md-3'>$pro_name</div>
+									<div class='col-md-3'>Rs.$pro_price.00</div>
+								</div>";
+
+				$no = $no+1;
+				# code...
+			}
+			# code...
+		}
+		# code...
 	}
 
 
