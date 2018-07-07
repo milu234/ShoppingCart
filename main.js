@@ -141,6 +141,42 @@ $(document).ready(function(){
 		})
 
 	})
+	cart_checkout();
+	function cart_checkout(){
+		$.ajax({
+			url   :  "action.php",
+			method : "POST",
+			data   :  {cart_checkout:1},
+			success : function(data){
+				$("#cart_checkout").html(data);
+			}
+
+
+		})
+	}
+
+
+	$("body").delegate(".qty","keyup",function(){
+		var pid = $(this).attr("pid");
+		var qty =$("#qty-"+pid).val();
+		var price =$("#price-"+pid).val();
+		var total = qty*price;
+		$("#total-"+pid).val(total);
+	})
+
+	$("body").delegate(".remove","click",function(event){
+		event.preventDefault();
+		var pid = $(this).attr("remove_id");
+		alert(pid);
+
+	})
+
+	$("body").delegate(".delete","click",function(event){
+		event.preventDefault();
+		var pid = $(this).attr("delete_id");
+		alert(pid);
+	})
+
 
 
 

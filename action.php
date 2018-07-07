@@ -166,7 +166,7 @@ include "db.php";
 		}
 	}
 
-	if (isset($_POST["get_cart_product"])) {
+	if (isset($_POST["get_cart_product"]) || isset($_POST["cart_checkout"]) ) {
 		$uid = $_SESSION["uid"];
 		$sql = "SELECT * FROM cart WHERE user_id = '$uid'  ";
 		$run_query = mysqli_query($con,$sql);
@@ -178,8 +178,10 @@ include "db.php";
 				$pro_id = $row["p_id"];
 				$pro_name = $row["product_title"];
 				$pro_image = $row["product_image"];
+				$qty = $row["qty"];
 				$pro_price = $row["price"];
-
+				$total = $row["total_amount"];
+				if (isset($_POST["get_cart_product"])) {
 
 				echo "<div class='row'>
 									<div class='col-md-3'>$no</div>
@@ -188,13 +190,37 @@ include "db.php";
 									<div class='col-md-3'>Rs.$pro_price.00</div>
 								</div>";
 
-				$no = $no+1;
+								$no = $no+1;
+					# code...
+				} else {
+					echo "<div class='row'>
+							<div class='col-md-2'>
+								<div class='btn-group'>
+									<a href='#'  remove_id='$pro_id' class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></a>
+									<a href='#' delete_id='$pro_id'   class='btn btn-success delete'><span class='glyphicon glyphicon-ok-sign'></span></a>
+								</div>
+							</div>
+							
+							<div class='col-md-2'><img style='width:50px; height:60px;' src='product_images/$pro_image'></div>
+							<div class='col-md-2'>Product $pro_name</div>
+							<div class='col-md-2'><input type='text' class='form-control qty' pid='$pro_id' id='qty-$pro_id' value='$qty' ></div>
+							<div class='col-md-2'><input type='text' class='form-control price' pid='$pro_id' id='price-$pro_id'  value='$pro_price' disabled></div>
+							<div class='col-md-2'><input type='text' class='form-control total' pid='$pro_id' id='total-$pro_id'  value='$total' disabled></div>
+						</div>";
+					# code...
+				}
+				
+
+
+
+				
 				# code...
 			}
 			# code...
 		}
 		# code...
 	}
+
 
 
 	

@@ -36,25 +36,25 @@
 							<div class="col-md-2"><b>Action</b></div>
 							<div class="col-md-2"><b>Product Image</b></div>
 							<div class="col-md-2"><b>Product Name</b></div>
-							<div class="col-md-2"><b>Product Price</b></div>
 							<div class="col-md-2"><b>Quantity</b></div>
+							<div class="col-md-2"><b>Product Price</b></div>
 							<div class="col-md-2"><b>Price in Rs</b></div>
 						</div>
-
-						<div class="row">
+						<div id="cart_checkout"></div>
+						<!-- <div class="row">
 							<div class="col-md-2">
 								<div class="btn-group">
 									<a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 									<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span></a>
 								</div>
 							</div>
-							<!-- <div class="col-md-2">Action</div> -->
+							
 							<div class="col-md-2"><img src="product_images/images.jpeg"></div>
 							<div class="col-md-2">Product Name</div>
 							<div class="col-md-2"><input type="text" class="form-control" value='1' ></div>
 							<div class="col-md-2"><input type="text" class="form-control" value="5000" disabled></div>
 							<div class="col-md-2"><input type="text" class="form-control" value="5000" disabled></div>
-						</div>
+						</div> -->
 					</div>
 					<div class="panel-footer"></div>
 					
