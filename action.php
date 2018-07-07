@@ -153,7 +153,7 @@ include "db.php";
 			$row  = mysqli_fetch_array($run_query);
 				$id = $row["product_id"];
 				$pro_name = $row["product_title"];
-				$pro_image = $row["product_image"];
+				$pro_image = $row["product_img"];
 				$pro_price = $row["product_price"];
 			$sql = "INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `product_title`, `product_image`, `qty`, `price`, `total_amount`) VALUES (NULL, '$p_id', '0', '$user_id', '$pro_name', '$pro_image', '1', '$pro_price', '$pro_price');";
 			if (mysqli_query($con,$sql)) {
@@ -197,7 +197,7 @@ include "db.php";
 							<div class='col-md-2'>
 								<div class='btn-group'>
 									<a href='#'  remove_id='$pro_id' class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></a>
-									<a href='#' delete_id='$pro_id'   class='btn btn-success delete'><span class='glyphicon glyphicon-ok-sign'></span></a>
+									<a href='#' update_id='$pro_id'   class='btn btn-success update'><span class='glyphicon glyphicon-ok-sign'></span></a>
 								</div>
 							</div>
 							
@@ -219,6 +219,41 @@ include "db.php";
 			# code...
 		}
 		# code...
+	}
+
+
+	if (isset($_POST["removeFromCart"])) {
+		$pid = $_POST["removeId"];
+		$uid = $_SESSION["uid"];
+		$sql = "DELETE FROM cart WHERE user_id = '$uid' AND p_id= '$pid' ";
+		$run_query = mysqli_query($con,$sql);
+		if ($run_query) {
+			echo " <div class='alert alert-danger'>
+						<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+						<b>Product Removed From the Cart .. Continue Shopping </b>
+						</div>";
+		}
+		# code...
+	}
+
+
+	if (isset($_POST["updateProduct"])) {
+		# code...
+		$uid = $_SESSION["uid"];
+		$pid = $_POST["updateId"];
+		$qty = $_POST["qty"];
+		$price = $_POST["price"];
+		$total = $_POST["total"];
+
+		$sql = "UPDATE cart SET qty = '$qty' ,price = '$price', total_amount = '$total' WHERE user_id = '$uid' AND p_id = '$pid' ";
+		$run_query = mysqli_query($con,$sql);
+		if ($run_query) {
+			# code...
+			echo " <div class='alert alert-info'>
+						<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+						<b>Product Updated .. Continue Shopping </b>
+						</div>";
+		}
 	}
 
 

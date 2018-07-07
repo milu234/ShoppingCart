@@ -1,3 +1,14 @@
+<?php 
+session_start();
+if (!isset($_SESSION["uid"])) {
+	header("location:index.php");
+	# code...
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -25,6 +36,12 @@
 	<p><br></p>
 	<p><br></p>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8" id="cart_msg" >
+				<!-- Cart Message -->
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">

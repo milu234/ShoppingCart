@@ -167,14 +167,32 @@ $(document).ready(function(){
 	$("body").delegate(".remove","click",function(event){
 		event.preventDefault();
 		var pid = $(this).attr("remove_id");
-		alert(pid);
+		$.ajax({
+			url     :   "action.php",
+			method  :   "POST",
+			data    :   {removeFromCart:1,removeId:pid},
+			success :   function(data){
+				$("#cart_msg").html(data);
+				cart_checkout();
+			}
+		})
 
 	})
 
-	$("body").delegate(".delete","click",function(event){
+	$("body").delegate(".update","click",function(event){
 		event.preventDefault();
-		var pid = $(this).attr("delete_id");
-		alert(pid);
+		var pid = $(this).attr("update_id");
+		var qty = $("#qty-"+pid).val();
+		var price = $("#price-"+pid).val();
+		var total = $("#total-"+pid).val();
+		$.ajax({
+			url   :  "action.php",
+			method : "POST",
+			data    : {updateProduct:1,updateId:pid,qty:qty,price:price,total:total},
+			success  : function(data){
+				$("#cart_msg").html(data);
+			}
+		})
 	})
 
 
