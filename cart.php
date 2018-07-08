@@ -72,6 +72,12 @@ if (!isset($_SESSION["uid"])) {
 							<div class="col-md-2"><input type="text" class="form-control" value="5000" disabled></div>
 							<div class="col-md-2"><input type="text" class="form-control" value="5000" disabled></div>
 						</div> -->
+					<!-- 	<div class="row">
+							<div class="col-md-8"></div>
+							<div class="col-md-4">
+								<b>Total Rs.52314</b>
+							</div>
+						</div> -->
 					</div>
 					<div class="panel-footer"></div>
 					

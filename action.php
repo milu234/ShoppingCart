@@ -35,10 +35,28 @@ include "db.php";
 			
 		}
 	}
+	if (isset($_POST["page"])) {
+		$sql = "SELECT * FROM products";
+		$run_query = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($run_query);
+		$pageno = ceil($count/9);
+		for ($i=1; $i<=$pageno ; $i++) {
+			echo "<li><a href='#' page='$i' id='page'  >$i</a></li>";
 
+		}
+		# code...
+	}
 
 	if (isset($_POST["getProduct"])) {
-		$product_query = "SELECT * FROM products ORDER BY RAND() LIMIT 0,9";
+		$limit = 9;
+		if (isset($_POST["setPage"])) {
+			$pageno = $_POST["pageNumber"];
+			$start = ($pageno*$limit)-$limit;
+			# code...
+		} else {
+			$start = 0;
+		}
+		$product_query = "SELECT * FROM products  LIMIT $start,$limit";
 		$run_query = mysqli_query($con,$product_query);
 		if (mysqli_num_rows($run_query) > 0) {
 			while ($row = mysqli_fetch_array($run_query)) {
@@ -81,7 +99,7 @@ include "db.php";
 	// 					<div class='panel panel-info'>
 	// 						<div class='panel-heading'><h4>$pro_title</h4></div>
 	// 						<div class='panel-body'>
-	// 							<img  class='img-responsive' src='product_images/$pro_image' style='width:160px;height:250px;'/>
+	// 							<img  class='img-res src='product_images/$pro_image' style='width:160px;height:250px;'/>
 	// 						</div>
 	// 						<div class='panel-heading'>
 	// 							Rs.$pro_price.00
@@ -120,7 +138,7 @@ include "db.php";
 						<div class='panel panel-info'>
 							<div class='panel-heading'><h4>$pro_title</h4></div>
 							<div class='panel-body'>
-								<img  class='img-responsive' src='product_images/$pro_image' style='width:160px;height:250px;'/>
+								<img   src='product_images/$pro_image' style='width:160px;height:250px;'/>
 							</div>
 							<div class='panel-heading'>
 								Rs.$pro_price.00
@@ -173,6 +191,7 @@ include "db.php";
 		$count = mysqli_num_rows($run_query);
 		if ($count > 0) {
 			$no = 1;
+			$total_amt = 0;
 			while ($row = mysqli_fetch_array($run_query)) {
 				$id = $row["id"];
 				$pro_id = $row["p_id"];
@@ -181,6 +200,9 @@ include "db.php";
 				$qty = $row["qty"];
 				$pro_price = $row["price"];
 				$total = $row["total_amount"];
+				$price_array = array($total);
+				$total_sum = array_sum($price_array);
+				$total_amt = $total_amt+$total_sum;
 				if (isset($_POST["get_cart_product"])) {
 
 				echo "<div class='row'>
@@ -202,7 +224,7 @@ include "db.php";
 							</div>
 							
 							<div class='col-md-2'><img style='width:50px; height:60px;' src='product_images/$pro_image'></div>
-							<div class='col-md-2'>Product $pro_name</div>
+							<div class='col-md-2'> $pro_name</div>
 							<div class='col-md-2'><input type='text' class='form-control qty' pid='$pro_id' id='qty-$pro_id' value='$qty' ></div>
 							<div class='col-md-2'><input type='text' class='form-control price' pid='$pro_id' id='price-$pro_id'  value='$pro_price' disabled></div>
 							<div class='col-md-2'><input type='text' class='form-control total' pid='$pro_id' id='total-$pro_id'  value='$total' disabled></div>
@@ -216,9 +238,26 @@ include "db.php";
 				
 				# code...
 			}
+
+			if (isset($_POST["cart_checkout"])) {
+				echo "	<div class='row'>
+							<div class='col-md-8'></div>
+							<div class='col-md-4'>
+								<b>Total Rs. $total_amt.00</b>
+							</div>
+						</div>";
+			}
 			# code...
 		}
 		# code...
+	}
+
+	if (isset($_POST["cart_count"])) {
+		$uid = $_SESSION["uid"];
+		$sql = "SELECT * FROM cart WHERE user_id = '$uid'  ";
+		$run_query = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($run_query);
+		echo $count;
 	}
 
 

@@ -113,7 +113,7 @@ $(document).ready(function(){
 		})
 
 	})
-
+	cart_count();
 	$("body").delegate("#product","click",function(event){
 		event.preventDefault();
 		var p_id = $(this).attr('pid');
@@ -123,11 +123,44 @@ $(document).ready(function(){
 			data    : {addToProduct:1,proId:p_id},
 			success : function(data){
 				$("#product_msg").html(data);
+				cart_count();
 
 			}
 		})
 	})
+	function cart_container(){
+		$.ajax({
+			url     :  "action.php",
+			method  :   "POST",
+			data    : {get_cart_product:1},
+			success : function(data){
+				$("#cart_product").html(data);
 
+			}
+		})
+
+
+
+
+	};
+
+	function cart_count(){
+
+		$.ajax({
+			url     :  "action.php",
+			method  :   "POST",
+			data    : {cart_count:1},
+			success : function(data){
+				$(".badge").html(data);
+
+
+			}
+		})
+
+
+	}
+
+	cart_container();
 	$("#cart_container").click(function(event){
 		event.preventDefault();
 		$.ajax({
@@ -191,8 +224,34 @@ $(document).ready(function(){
 			data    : {updateProduct:1,updateId:pid,qty:qty,price:price,total:total},
 			success  : function(data){
 				$("#cart_msg").html(data);
+				cart_checkout();
 			}
 		})
+	})
+
+	page();
+	function page(){
+		$.ajax({
+			url    :   "action.php",
+			method :   "POST",
+			data   :   {page:1},
+			success:   function(data){
+				$("#pageno").html(data);
+			}
+		})
+	}
+
+	$("body").delegate("#page","click",function(){
+		var pn = $(this).attr("page");
+		$.ajax({
+			url      :   "action.php",
+			method   :   "POST",
+			data     :   {getProduct:1,setPage:1,pageNumber:pn},
+			success  :   function(data){
+				$("#get_product").html(data);
+			}
+		})
+
 	})
 
 
