@@ -31,8 +31,8 @@ if (isset($_SESSION["uid"])) {
 				<li style="top: 10px;left: 20px;"><button  class="btn btn-primary" id="search_btn" >Search</button></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right" class="nav navbar-responsive">
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
-					<div class="dropdown-menu" style="width: 400px;" >
+				<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
+				 -->	<div class="dropdown-menu" style="width: 400px;" >
 						<div class="panel panel-success">
 							<div class="panel-heading">
 								<div class="row">

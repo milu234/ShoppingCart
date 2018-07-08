@@ -43,22 +43,10 @@ if (!isset($_SESSION["uid"])) {
 				<div class="panel panel-default">
 					<div class="panel-heading"></div>
 					<div class="panel-body">
-						<h1>Customer Order Details</h1>
+						<h1>Thank you</h1>
 						<hr>
-						<div class="row">
-							<div class="col-md-6">
-								<img style="float: right;"  src="product_images/camera.jpeg" class="thumbnail-img" />
-							</div>
-							<div class="col-md-6">
-								<table>
-									<tr><td>Prduct Name</td><td><b>Sony Camera</b> </td></tr>
-									<tr><td>Prduct Price</td><td><b>Rs.10000</b> </td></tr>
-									<tr><td>Quantity</td><td><b>3</b> </td></tr>
-									<tr><td>Payment</td><td><b>Completed</b> </td></tr>
-									<tr><td>Transaction Id</td><td><b>RT4567hjkl</b> </td></tr>
-								</table>
-							</div>
-						</div>
+						<p>Hello <?php echo $_SESSION["name"]; ?>,Your payment process is successfully completed and your transaction id is xxxxxx-xxx-xx-x-x<br>You can continue your shopping <br></p>
+						<a href="index.php" class="btn btn-success btn-lg">Continue Shopping</a>
 					</div>
 				</div>
 			</div>

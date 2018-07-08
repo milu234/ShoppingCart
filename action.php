@@ -247,6 +247,35 @@ include "db.php";
 							</div>
 						</div>";
 			}
+
+			echo '
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				  <input type="hidden" name="cmd" value="_cart">
+				  <input type="hidden" name="business" value="2016.milan.hazra@ves.ac.in">
+				  <input type="hidden" name="upload" value="1">';
+
+				  $x=0;
+				  $uid = $_SESSION["uid"];
+				  $sql = "SELECT * FROM cart WHERE user_id =  '$uid' ";
+				  $run_query = mysqli_query($con,$sql);
+				  while ($row = mysqli_fetch_array($run_query)) {
+				  	$x++;
+				  	# code...
+				  
+
+
+				 echo '<input type="hidden" name="item_name_'.$x.'" value="'.$row["product_title"].'">
+				  <input type="hidden" name="item_number_'.$x.'" value="'.$x.'">
+				  <input type="hidden" name="amount_'.$x.'" value="'.$row["price"].'">
+				  <input type="hidden" name="quantity_'.$x.'" value="'.$row["qty"].'">';
+				  
+				  }
+
+				 echo '<input style="float:right;margin-right:80px;" type="image" name="submit"
+				    src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+				    alt="PayPal - The safer, easier way to pay online">
+				</form>';
+
 			# code...
 		}
 		# code...
