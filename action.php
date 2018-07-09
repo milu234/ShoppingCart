@@ -152,36 +152,49 @@ include "db.php";
 
 
 	if (isset($_POST["addToProduct"])) {
-		# code...
-		$p_id = $_POST["proId"];
 
-		$user_id = $_SESSION["uid"];
-		$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'  ";
-		$run_query = mysqli_query($con,$sql);
-		$count = mysqli_num_rows($run_query);
-		if ($count > 0) {
+
+
+		if (isset($_SESSION["uid"])) {
+
+			$p_id = $_POST["proId"];
+
+			$user_id = $_SESSION["uid"];
+			$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'  ";
+			$run_query = mysqli_query($con,$sql);
+			$count = mysqli_num_rows($run_query);
+			if ($count > 0) {
 			# code...
 					echo " <div class='alert alert-warning'>
 					<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
 					<b>Product Already in the Cart ...Continue Shopping </b>
 					</div>";
-		} else {
-			$sql = "SELECT * FROM products WHERE product_id = '$p_id'";
-			$run_query = mysqli_query($con,$sql);
-			$row  = mysqli_fetch_array($run_query);
-				$id = $row["product_id"];
-				$pro_name = $row["product_title"];
-				$pro_image = $row["product_img"];
-				$pro_price = $row["product_price"];
-			$sql = "INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `product_title`, `product_image`, `qty`, `price`, `total_amount`) VALUES (NULL, '$p_id', '0', '$user_id', '$pro_name', '$pro_image', '1', '$pro_price', '$pro_price');";
-			if (mysqli_query($con,$sql)) {
-						echo " <div class='alert alert-success'>
-						<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
-						<b>Product Added to the cart </b>
-						</div>";
+			} else {
+				$sql = "SELECT * FROM products WHERE product_id = '$p_id'";
+				$run_query = mysqli_query($con,$sql);
+				$row  = mysqli_fetch_array($run_query);
+					$id = $row["product_id"];
+					$pro_name = $row["product_title"];
+					$pro_image = $row["product_img"];
+					$pro_price = $row["product_price"];
+				$sql = "INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `product_title`, `product_image`, `qty`, `price`, `total_amount`) VALUES (NULL, '$p_id', '0', '$user_id', '$pro_name', '$pro_image', '1', '$pro_price', '$pro_price');";
+					if (mysqli_query($con,$sql)) {
+								echo " <div class='alert alert-success'>
+								<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+								<b>Product Added to the cart </b>
+								</div>";
 				# code...
 			}
 		}
+
+			# code...
+		} else {
+			echo " <div class='alert alert-success'>
+						<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+						<b>First you have to Sign up  </b>
+						</div>";
+		}
+		# code...
 	}
 
 	if (isset($_POST["get_cart_product"]) || isset($_POST["cart_checkout"]) ) {
@@ -281,7 +294,7 @@ include "db.php";
 		# code...
 	}
 
-	if (isset($_POST["cart_count"])) {
+	if (isset($_POST["cart_count"]) AND isset($_SESSION["uid"])) {
 		$uid = $_SESSION["uid"];
 		$sql = "SELECT * FROM cart WHERE user_id = '$uid'  ";
 		$run_query = mysqli_query($con,$sql);

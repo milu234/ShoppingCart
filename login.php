@@ -13,7 +13,12 @@ if (isset($_POST["userLogin"])) {
 			$row = mysqli_fetch_array($run_query);
 			$_SESSION["uid"] = $row["user_id"];
 			$_SESSION["name"]= $row["first_name"];
-				echo "trueasdfghjkl";
+
+			echo "trueasdfghjkl";
+	// 			echo " <div class='alert alert-success'>
+	// 	<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
+	// 	<b>Registered Succesfully </b>
+	// </div>";
 
 
 			// while ($row = mysqli_fetch_array($run_query)) 

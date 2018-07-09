@@ -107,7 +107,8 @@ $(document).ready(function(){
 			data     :   {userLogin:1,userEmail:email,userPassword:pass},
 			success  :   function(data){
 				if (data == "trueasdfghjkl") {
-					window.location.href = "profilee.php";
+					 window.location.href = "profilee.php";
+
 				}
 			}
 		})

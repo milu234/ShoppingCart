@@ -24,11 +24,11 @@ if (!isset($_SESSION["uid"])) {
 	<div class="navbar navbar-inverse navbar-fixed-top" class="nav navbar-responsive">
 		<div class="container-fluid">
 			<div class=" navbar-header">
-				<a href="#" class="navbar-brand">Milan</a>
+				<a href="profilee.php" class="navbar-brand">Milan</a>
 			</div>
 			<ul class="nav navbar-nav" id="dropdown-menu">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>Product</a></li>
+				<li><a href="profilee.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="profilee.php"><span class="glyphicon glyphicon-briefcase"></span>Product</a></li>
 			</ul>
 		</div>
 	</div>
