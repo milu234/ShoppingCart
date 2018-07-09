@@ -181,8 +181,8 @@ include "db.php";
 					if (mysqli_query($con,$sql)) {
 								echo " <div class='alert alert-success'>
 								<a href='#' class='close' data-dismiss='alert'  aria-label='close'>&times;</a>
-								<b>Product Added to the cart </b>
-								</div>";
+						<b>Product Added to the cart </b>
+						</div>";
 				# code...
 			}
 		}
